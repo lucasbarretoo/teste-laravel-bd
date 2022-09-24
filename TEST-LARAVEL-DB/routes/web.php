@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContatoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ContatoController::class, 'index'])->name('index_contato');
+Route::post('/gravarContato', [ContatoController::class, 'gravarContato'])->name('gravar_contato');
+Route::get('/editarContato/{contato_id}', [ContatoController::class, 'index'])->name('editar_contato');
+Route::post('/excluirContato/{contato_id}', [ContatoController::class, 'excluir'])->name('excluir_contato');
